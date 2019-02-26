@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   # end
 
   namespace :api do     
-    get "/contacts" => "contacts#contact1"   
+    get "/contacts" => "contacts#contact_1"   
   end
 end
