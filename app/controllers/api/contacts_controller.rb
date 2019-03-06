@@ -12,10 +12,10 @@ class Api::ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      email: params[:email],
-      phone_number: params[:phone_number])
+      first_name: params[:first_name] || "Bob",
+      last_name: params[:last_name] || "Smith",
+      email: params[:email] || "defaultemail@gmail.com",
+      phone_number: params[:phone_number] || 10)
     @contact.save
     render 'show.json.jbuilder'
   end
