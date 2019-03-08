@@ -2,7 +2,7 @@ class Contact < ApplicationRecord
   validates :first_name, presence:true
   validates :last_name, presence:true
   validates :email, uniqueness:true
-  validates :email, format: {with: /\w+\W\w+\W\w+/,
+  validates :email, format: {with: /\w+@\w+.\w+/,
     message: "has an invalid format"}
 
   def friendly_updated_at
