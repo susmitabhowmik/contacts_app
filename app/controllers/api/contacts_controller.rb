@@ -21,7 +21,7 @@ class Api::ContactsController < ApplicationController
     if @contact.save
       render 'show.json.jbuilder'
     else
-      render 'errors.json.jbuilder'
+      render 'errors.json.jbuilder', status: :unprocessible_entry
     end
   end
 
@@ -37,7 +37,7 @@ class Api::ContactsController < ApplicationController
     if @contact.save
       render 'show.json.jbuilder'
     else
-      render 'errors.json.jbuilder'
+      render 'errors.json.jbuilder', status: :unprocessible_entry
     end
 
   end
