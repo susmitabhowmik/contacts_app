@@ -18,8 +18,11 @@ class Api::ContactsController < ApplicationController
       phone_number: params[:phone_number],
       middle_name: params[:middle_name],
       bio: params[:bio])
-    @contact.save
-    render 'show.json.jbuilder'
+    if @contact.save
+      render 'show.json.jbuilder'
+    else
+      render 'errors.json.jbuilder'
+    end
   end
 
   def update
@@ -31,8 +34,12 @@ class Api::ContactsController < ApplicationController
     @contact.phone_number = params[:phone_number] || @contact.phone_number    
     @contact.middle_name = params[:middle_name] || @contacts.middle_name
     @contact.bio = params[:bio] || @contacts.bio  
-    @contact.save
-    render 'show.json.jbuilder'
+    if @contact.save
+      render 'show.json.jbuilder'
+    else
+      render 'errors.json.jbuilder'
+    end
+
   end
 
   def destroy
