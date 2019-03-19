@@ -1,7 +1,17 @@
 class Api::ContactsController < ApplicationController
   def index
-    @contacts = Contact.all
-    render 'index.json.jbuilder'
+    if current_user
+      @contacts = current_user.contacts
+      if params[:group]
+        #find the group
+        group = Group.find_by(name: params[:group])
+        #find all the contacts in that group
+        @contacts = group.contacts
+      end
+      render 'index.json.jbuilder'
+    else
+      render json: []
+    end
   end
 
   def show
@@ -19,7 +29,8 @@ class Api::ContactsController < ApplicationController
       email: params[:email],
       phone_number: params[:phone_number],
       middle_name: params[:middle_name],
-      bio: params[:bio])
+      bio: params[:bio],
+      user_id: current_user.id)
     if @contact.save
       render 'show.json.jbuilder'
     else

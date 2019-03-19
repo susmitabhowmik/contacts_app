@@ -6,3 +6,4 @@ json.phone_number contact.phone_number
 json.email contact.email
 json.updated_at contact.updated_at
 json.bio contact.bio
+json.groups contact.groups
